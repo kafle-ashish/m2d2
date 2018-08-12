@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>m2d2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">  
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon"/>  
+    <script type=text/javascript src="{{
+            url_for('static', filename='js/gps.js') }}"></script>
+    <script type=text/javascript src="{{
+        url_for('static', filename='js/gauge.min.js') }}"></script>
+    
+    <script type=text/javascript src="{{
+        url_for('static', filename='js/rover.js') }}"></script>
+      
+</head>
+
+<body style="background-color: whitesmoke;">
+    <header>
+        <div class="navbar-header text-center" >
+            <nav class="navbar navbar-light bg-light" style="box-shadow: 2px 2px #D7CCC8; height: 60px; ">
+                <a class="navbar-brand" href="#">
+                        <i class="fab fa-affiliatetheme"></i>
+                        m2d2
+                    </a>
+
+                        <button type="button" class="btn btn-light" onclick="location.href ='/dashboard/dht11'">
+                                <i class="fas fa-cog"></i>
+                        </button>
+                        
+            </nav>
+        </div>       
+    </header> 
+    
+    <div class="container"  >
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="container" align="left" style="margin-top: 50px; margin-left:-1.5rem;" style="width: 31rem">
+                    <div class="card" style="width: 27.2rem; box-shadow: 2px 2px 2px 2px #D7CCC8;"> 
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Pi-cam Stream</a>
+                            </li>                        
+                        </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                            <div class="card" style=" background-color: white; box-shadow: rgb(0, 0, 0)">
+                                <div class="card-body" style="width:27rem; height:20.2rem; padding: 0px">
+                                    <img src="http://192.168.0.107:8000/stream.mjpg" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-lg-2" align="center">
+                <div class="container" align="center">
+                    <div class="gauge" style="margin-top:100% ">
+                            <span class="badge badge-pill badge-primary">Temperature</span>
+                        <canvas width="90" height="90" id="canvas-preview"></canvas>
+                        <div id="preview-textfield" style="font-size: 15px;">0%</div>
+                    </div>
+                </div>
+                <hr>
+                <hr>       
+                <div class="container" align="center">
+                    <div class="gauge" >
+                            <span class="badge badge-pill badge-primary">Humidity</span>
+                        <canvas width="70" height="70" id="canvas-preview1"></canvas>
+                        <div id="preview-textfield1" style="font-size: 15px;">0%</div>
+                    </div>
+                </div>  
+            </div>
+            <div class="col-lg-5">
+                <div class="container" align="right" style="margin-top: 50px; margin-right:5%;width: 30rem; box-shadow: black">
+                    <div class="card" style="width: 28rem; box-shadow: 2px 2px 2px 2px #D7CCC8;"> 
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home1" role="tab" aria-controls="pills-home" aria-selected="true">Geolocation</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-home1" role="tabpanel" aria-labelledby="pills-home-tab">
+                                <div class="card" style=" background-color: lightblue; padding: 0px;">
+                                    <div class="card-body" id = "map" style="width:27rem; height:20rem; padding: 0px; align-content: center">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <div class="form-group" style="box-shadow: 2px 2px 2px 2px #D7CCC8;">
+                <textarea class="form-control" rows="4" id="comment"></textarea>
+            </div> 
+        </div>
+    </div>
+
+    <script type=text/javascript src="{{
+        url_for('static', filename='js/gaug.js') }}"></script>
+    <script type=text/javascript src="{{
+        url_for('static', filename='js/dht.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5J-JOSk5xVNFR1AKviQNc2ufZQwRRHQg&callback=initMap"></script>
+    <script type=text/javascript src="{{
+        url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script type=text/javascript src="{{
+        url_for('static', filename='js/jquery.min.js') }}"></script>
+
+</body>
+</html>
